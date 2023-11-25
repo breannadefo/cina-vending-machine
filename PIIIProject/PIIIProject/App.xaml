@@ -1,0 +1,11 @@
+﻿<Application x:Class="PIIIProject.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PIIIProject"
+             StartupUri="MainWindow.xaml"
+             DispatcherUnhandledException="Application_DispatcherUnhandledException">
+            <!-- got above line from the CS conference app code on github-->
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

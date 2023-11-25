@@ -1,0 +1,13 @@
+productCode,name,price,stock
+DRK01,Water,1.99,0
+DRK02,Coca Cola,3.99,7
+DRK03,Ice Tea,2.99,15
+CHP01,Takis,3.99,5
+CHP02,Doritos Classic,3.99,0
+CHP03,Lays Classic,1.99,7
+CHO01,KitKat,1.99,20
+CHO02,Twixx,1.99,14
+CHO03,Kinder Buano,1.99,14
+BAR01,Natural Valley,0.99,5
+BAR02,Nutri Grain,1.45,9
+BAR03,Kashi,0.99,19

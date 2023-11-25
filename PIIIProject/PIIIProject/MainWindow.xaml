@@ -1,0 +1,1006 @@
+﻿<Window x:Class="PIIIProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+        xmlns:local="clr-namespace:PIIIProject"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="750" Width="990"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <!-- In the x:Class I added: xmlns:syncfusion="http://schemas.syncfusion.com/wpf" to be able to have
+        a numerical spiner for each article in the vending machine check more about that later just use a slider for now-->
+        
+        <!-- Need help to see the visual ideas for header of each catagories-->
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Conventions for the add and remove button -->
+        <!-- for Add: itemCode_btnAdd-->
+        <!-- for remove: itemCode_btnRemove-->
+        
+        <!--#region The Title-->
+            <!-- Maybe add a picture to make it more pretty-->
+        <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="2" CornerRadius="8,8,3,3">
+            
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#babeee" Offset="0.0"/>
+                    <GradientStop Color="#7573b6" Offset="0.5"/>
+                    <GradientStop Color="#70acb4" Offset="1.0"/>
+
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel  Orientation="Horizontal">
+                <Image Source="./Images/logo.png" Height="55"/>
+                <Label Content="The Cina Vending Machine"
+                   FontSize="25" 
+                   FontWeight="Bold"  VerticalContentAlignment="Bottom"
+                     Foreground="White" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+        <!--#endregion-->
+
+
+        <!--#region Background for column 0 -->
+        <!-- Background for the header for each column/ migh be changed-->
+        <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" BorderBrush="Black" BorderThickness="2" CornerRadius="8,8,3,3">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#70acb4" Offset="0.5"/>
+                    <GradientStop Color="#7573b6" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <!--#endregion-->
+
+        <!--#region  Drinks-->
+        <!--  The first Row is about Drinks  -->
+        <!--//*****************************//-->        
+            <!-- COlor for the labels of each catagories need to be purple to blue-->
+                <Label Grid.Row="1" Grid.Column="0" Content="Drinks"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" 
+                        FontWeight="Bold" 
+                        Margin="0,30,0,5"/>
+
+            <!--#region Water-->
+            <Border Grid.Row="1" Grid.Column="1" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <!-- This is for Water-->
+                <StackPanel Orientation="Vertical" x:Name="DRK01Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Water" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="Images/Drinks/water.png"  Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+                        <TextBlock Text="$1.99" Grid.Row="2" HorizontalAlignment="Center"/>
+                        
+                        <!-- the item left-->
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Slider Maximum="20" x:Name="DRK01Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                    <TextBlock Width="40" Height="20" x:Name="DRK01Stock"></TextBlock>
+                                </Border>
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                            </Grid>
+                        </Grid>
+                        
+                        <!-- The add and Remove button-->
+                        <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="DRK01BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="DRK01BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                 
+                                <!-- Output the value of the input -->
+                            <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                <TextBlock Width="40" Height="20" x:Name="DRK01Show"></TextBlock>
+                            </Border>
+
+                        </Grid>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+        
+            <!--#region  Coca Cola-->
+
+            <Border Grid.Row="1" Grid.Column="2" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <!-- This is for Coca Cola-->
+                <StackPanel Orientation="Vertical"  x:Name="DRK02Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Coca Cola" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Drinks/cocaCola.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$3.99" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Slider Maximum="20" x:Name="DRK02Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                <TextBlock Width="40" Height="20" x:Name="DRK02Stock"></TextBlock>
+                            </Border>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <!-- The add and Remove button-->
+                        <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="DRK02BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="DRK02BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="DRK02Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+        <!--#endregion-->
+        
+            <!--#region  Ice Tea-->
+            <Border Grid.Row="1" Grid.Column="3" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <!-- This is for Ice Tea-->
+                <StackPanel Orientation="Vertical"  x:Name="DRK03Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Ice Tea" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+                        <!-- the product Image-->
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Drinks/IceTea.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+
+                        <TextBlock Text="$2.99" Grid.Row="2" HorizontalAlignment="Center"/>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Slider Maximum="20" x:Name="DRK03Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                <TextBlock Width="40" Height="20" x:Name="DRK03Stock"></TextBlock>
+                            </Border>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <!-- The add and Remove button-->
+                        <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="DRK03BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="DRK03BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="DRK03Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
+                BorderBrush="Black" BorderThickness="2" 
+                CornerRadius="8,8,3,3"/>
+
+
+
+        <!--#endregion-->
+        
+        <!--#region Chips-->
+        
+        <!--  The Second Row is about Chips  -->
+        <!--//*****************************//-->
+        <Label Content="Chips" 
+               Grid.Row="2" Grid.Column="0" 
+               FontWeight="Bold" 
+               Margin="0,30,0,5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <!--#region Takis --> 
+                <!-- This is for takis-->
+            <Border Grid.Row="2" Grid.Column="1" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <StackPanel Orientation="Vertical"  x:Name="CHP01Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- the product Image-->
+                        <Label Content="Takis" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Chips/takis.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$3.99" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Slider Maximum="20" x:Name="CHP01Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                <TextBlock Width="40" Height="20" x:Name="CHP01Stock"></TextBlock>
+                            </Border>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                        </Grid>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="CHP01BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="CHP01BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="CHP01Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+
+        <!--#region Doritos -->
+        <!-- This is for Doritos Classic-->
+            <Border Grid.Row="2" Grid.Column="2" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <StackPanel Orientation="Vertical"  x:Name="CHP02Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- the product Image-->
+                        <Label Content="Doritos Classic" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Chips/Doritos.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$3.99" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Slider Maximum="20" x:Name="CHP02Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                <TextBlock Width="40" Height="20" x:Name="CHP02Stock"></TextBlock>
+                            </Border>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="CHP02BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="CHP02BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="CHP02Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+
+        <!--#region Lays -->
+        <!-- This is for Lays Classic-->
+            <Border Grid.Row="2" Grid.Column="3" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <StackPanel Orientation="Vertical"  x:Name="CHP03Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- the product Image-->
+                        <Label Content="Lays Classic" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Chips/lays.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$1.99" Grid.Row="2" HorizontalAlignment="Center"/>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Slider Maximum="20" x:Name="CHP03Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                <TextBlock Width="40" Height="20" x:Name="CHP03Stock"></TextBlock>
+                            </Border>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                        </Grid>
+                    </Grid>
+                        <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="CHP03BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="CHP03BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="CHP03Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+
+        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" 
+                BorderBrush="Black" BorderThickness="2" 
+                CornerRadius="8,8,3,3"/>
+
+        <!--#endregion-->
+       
+        <!--#region Chocolate-->
+        
+        <!--  The third Row is about Chocolate  -->
+        <!--//********************************//-->
+        <Label Content="Chocolate" 
+               Grid.Row="3" Grid.Column="0" 
+               FontWeight="Bold" 
+               Margin="0,30,0,5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <!--#region KitKat -->
+            <!-- This is for KitKat-->
+            <Border Grid.Row="3" Grid.Column="1" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <StackPanel Orientation="Vertical"  x:Name="CHO01Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- the product Image-->
+                        <Label Content="KitKat" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Chocolate/kitkat.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$1.99" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Slider Maximum="20" x:Name="CHO01Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                    <TextBlock Width="40" Height="20" x:Name="CHO01Stock"></TextBlock>
+                                </Border>
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                            </Grid>
+                        </Grid>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                            <Button Content="Add" x:Name="CHO01BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                            <Button Content="Remove" x:Name="CHO01BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="CHO01Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+
+        <!--#region Twix -->
+            <!-- This is for Twix-->
+            <Border Grid.Row="3" Grid.Column="2" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <StackPanel Orientation="Vertical"  x:Name="CHO02Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- the product Image-->
+                        <Label Content="Twix" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Chocolate/twix.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$1.99" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Slider Maximum="20" x:Name="CHO02Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                    <TextBlock Width="40" Height="20" x:Name="CHO02Stock"></TextBlock>
+                                </Border>
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                            </Grid>
+                        </Grid>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="CHO02BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="CHO02BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="CHO02Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+
+        <!--#region Kinder Bueno -->
+            <!-- This is for Kinder Bueno-->
+            <Border Grid.Row="3" Grid.Column="3" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <StackPanel Orientation="Vertical"  x:Name="CHO03Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- the product Image-->
+                        <Label Content="Kinder Bueno" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Chocolate/bueno.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$1.99" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Slider Maximum="20" x:Name="CHO03Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                    <TextBlock Width="40" Height="20" x:Name="CHO03Stock"></TextBlock>
+                                </Border>
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                            </Grid>
+                        </Grid>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="CHO03BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="CHO03BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="CHO03Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+        
+        <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" 
+                BorderBrush="Black" BorderThickness="2" 
+                CornerRadius="8,8,3,3"/>
+
+        <!--#endregion-->
+        
+        <!--#region Bars-->
+        
+        <!-- The Fourth Row is about the protein bars/bar -->
+        <!--//********************************//-->
+        <Label Content="Bars" 
+               Grid.Row="4" Grid.Column="0" 
+               FontWeight="Bold" 
+               Margin="0,30,0,5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <!--#region Natural Valley -->
+            <!-- this is for the Natural Valley-->
+            <Border Grid.Row="4" Grid.Column="1" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <StackPanel Orientation="Vertical"  x:Name="BAR01Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- the product Image-->
+                        <Label Content="Natural Valley" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Bars/natural_valley.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$0.99" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Slider Maximum="20" x:Name="BAR01Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                    <TextBlock Width="40" Height="20" x:Name="BAR01Stock"></TextBlock>
+                                </Border>
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                            </Grid>
+                        </Grid>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="BAR01BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="BAR01BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="BAR01Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+
+        <!--#region Nutri Grain -->
+            <!-- this is for the Nutri Grain-->
+            <Border Grid.Row="4" Grid.Column="2" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <StackPanel Orientation="Vertical"  x:Name="BAR02Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- the product Image-->
+                        <Label Content="Nutri Grain" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Bars/nutri_grain.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$1.45" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Slider Maximum="20" x:Name="BAR02Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                    <TextBlock Width="40" Height="20" x:Name="BAR02Stock"></TextBlock>
+                                </Border>
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                            </Grid>
+                        </Grid>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="BAR02BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="BAR02BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="BAR02Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+
+        <!--#region Kashi -->
+        <!-- this is for the Kashi-->
+            <Border Grid.Row="4" Grid.Column="3" BorderBrush="#babeee" BorderThickness="2" CornerRadius="8,8,3,3">
+                <StackPanel Orientation="Vertical"  x:Name="BAR03Stack">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- the product Image-->
+                        <Label Content="Kashi" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0"/>
+                        <StackPanel Grid.Row="1">
+                            <Grid>
+                                <Ellipse Width="50" Height="50" Fill="#ecf4be" Grid.Row="1"/>
+                                <Ellipse Width="50" Height="50" Grid.Row="1">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="./Images/Bars/kashi.png" Stretch="Fill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="$0.99" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Slider Maximum="20" x:Name="BAR03Sld" ValueChanged="SliderChanged" Grid.Row="0" Width="130"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border BorderThickness="3" BorderBrush="	#90d2c3"  Width="40" Height="20" HorizontalAlignment="Right">
+                                    <TextBlock Width="40" Height="20" x:Name="BAR03Stock"></TextBlock>
+                                </Border>
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Right"> item left</TextBlock>
+                            </Grid>
+                        </Grid>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Add" x:Name="BAR03BtnAdd" Grid.Column="0" Margin="0,5" Click="btnAdd_Click" Background="#7573b6"/>
+                                <Button Content="Remove" x:Name="BAR03BtnRemove" Grid.Column="1" Margin="5" Click="btnRemove_Click" Background="#70acb4"/>
+                                <!-- Output the value of the input -->
+                                <Border Grid.Column="3" BorderThickness="3" BorderBrush="#ecf4be"  Width="40" Height="20">
+                                    <TextBlock Width="40" Height="20" x:Name="BAR03Show"></TextBlock>
+                                </Border>
+                        </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        <!--#endregion-->
+        <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" 
+                BorderBrush="Black" BorderThickness="2" 
+                CornerRadius="8,8,3,3"/>
+
+        <!--#endregion-->
+        
+        <!--#region Shopping cart section -->
+        <Border Grid.Column="5" Grid.Row="0" BorderBrush="Black" BorderThickness="2" CornerRadius="8,8,3,3">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#90d2c3" Offset="0.5"/>
+                    <GradientStop Color="#ecf4be" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel Orientation="Horizontal">
+                <Image Source="./Images/shoppingCard.png" Height="40"/>
+                <Label Content="Cart" 
+               FontSize="20" FontWeight="DemiBold"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+            </StackPanel>
+        </Border>
+        
+        <Border Grid.Column="5" Grid.Row="1" Grid.RowSpan="5" BorderBrush="Black" BorderThickness="2">
+            <TextBlock Background="#ecf4be" x:Name="ShoppingInfo"/>
+        </Border>
+
+
+        <!--#endregion-->
+        
+        <!--#region Checkout and type of payment-->
+
+
+        <!--The Footer AKA checkout and which type of payment the user choose and checkout -->
+        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Button Content="proceed to checkout" x:Name="btnProceedCheckount"
+                        Click="btnProceedCheckount_Click"  
+                        Height="30" Background="#babeee" />
+            </Border>
+        </StackPanel>
+        
+        <!--#endregion-->
+
+
+    </Grid>
+</Window>

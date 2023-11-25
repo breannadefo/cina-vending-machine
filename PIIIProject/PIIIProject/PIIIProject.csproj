@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Bars\kashi.png" />
+    <None Remove="Images\Bars\natural_valley.png" />
+    <None Remove="Images\Bars\nutri_grain.png" />
+    <None Remove="Images\Checkout\cash.png" />
+    <None Remove="Images\Checkout\credit_debit.png" />
+    <None Remove="Images\Chips\Doritos.png" />
+    <None Remove="Images\Chips\lays.png" />
+    <None Remove="Images\Chips\takis.png" />
+    <None Remove="Images\Chocolate\bueno.png" />
+    <None Remove="Images\Chocolate\kitkat.png" />
+    <None Remove="Images\Chocolate\twix.png" />
+    <None Remove="Images\Drinks\cocaCola.png" />
+    <None Remove="Images\Drinks\IceTea.png" />
+    <None Remove="Images\Drinks\water.png" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\shoppingCard.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Bars\kashi.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Bars\natural_valley.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Bars\nutri_grain.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Checkout\cash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Checkout\credit_debit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Chips\Doritos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Chips\lays.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Chips\takis.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Chocolate\bueno.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Chocolate\kitkat.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Chocolate\twix.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Drinks\cocaCola.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Drinks\IceTea.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Drinks\water.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\shoppingCard.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
